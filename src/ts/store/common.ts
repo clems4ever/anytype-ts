@@ -373,7 +373,7 @@ class CommonStore {
 
 		analytics.device(info.deviceId);
 		analytics.profile(info.analyticsId);
-		Sentry.setUser({ id: info.analyticsId });
+		// Sentry.setUser({ id: info.analyticsId });
 	};
 
 	configSet (config: any, force: boolean) {

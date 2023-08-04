@@ -259,22 +259,22 @@ enableLogging({
 });
 */
 
-Sentry.init({
-	release: window.Electron.version.app,
-	environment: window.Electron.isPackaged ? 'production' : 'development',
-	dsn: Constant.sentry,
-	maxBreadcrumbs: 0,
-	beforeSend: (e: any) => {
-		e.request.url = '';
-		return e;
-	},
-	integrations: [
-		new Sentry.Integrations.GlobalHandlers({
-			onerror: true,
-			onunhandledrejection: true,
-		}),
-	],
-});
+// Sentry.init({
+// 	release: window.Electron.version.app,
+// 	environment: window.Electron.isPackaged ? 'production' : 'development',
+// 	dsn: Constant.sentry,
+// 	maxBreadcrumbs: 0,
+// 	beforeSend: (e: any) => {
+// 		e.request.url = '';
+// 		return e;
+// 	},
+// 	integrations: [
+// 		new Sentry.Integrations.GlobalHandlers({
+// 			onerror: true,
+// 			onunhandledrejection: true,
+// 		}),
+// 	],
+// });
 
 class RoutePage extends React.Component<RouteComponentProps> {
 	render () {

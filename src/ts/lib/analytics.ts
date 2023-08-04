@@ -1,4 +1,3 @@
-import * as amplitude from 'amplitude-js';
 import { I, C, UtilCommon, Storage } from 'Lib';
 import { commonStore, dbStore } from 'Store';
 import Constant from 'json/constant.json';
@@ -11,7 +10,6 @@ const KEYS = [
 ];
 const KEY_CONTEXT = 'analyticsContext';
 const KEY_ORIGINAL_ID = 'analyticsOriginalId';
-const URL = 'amplitude.anytype.io';
 
 class Analytics {
 	
@@ -47,23 +45,6 @@ class Analytics {
 		};
 
 		C.MetricsSetParameters(platform, version.join('-'));
-
-		this.instance = amplitude.getInstance();
-		this.instance.init(Constant.amplitude, null, {
-			apiEndpoint: URL,
-			batchEvents: true,
-			saveEvents: true,
-			includeUtm: true,
-			includeReferrer: true,
-			platform,
-		});
-
-		this.instance.setVersionName(window.Electron.version.app);
-		this.instance.setUserProperties({ 
-			deviceType: 'Desktop',
-			platform,
-			osVersion: window.Electron.version.os,
-		});
 
 		this.removeContext();
 		this.log('[Analytics].init');
@@ -350,7 +331,6 @@ class Analytics {
 
 		param = Object.assign(param, converted);
 		
-		this.instance.logEvent(code, param);
 		this.log(`[Analytics].event: ${code}`, param);
 	};
 	
